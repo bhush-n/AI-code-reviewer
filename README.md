@@ -6,6 +6,8 @@ Built with **Streamlit** for UI and **modern LangChain (LCEL)** with **Groq LLMs
 
 ---
 
+## Live APP: https://ai-code-reviewer-lang-groq.streamlit.app/
+
 ## 🚀 Features
 
 * 🔍 Review Python / Django / JavaScript code
