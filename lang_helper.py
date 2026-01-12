@@ -1,6 +1,7 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 import streamlit as st
+import json
 
 
 llm = ChatGroq(
@@ -29,4 +30,15 @@ Code:
     chain = prompt | llm
     response = chain.invoke({"code": code, "language": language})
 
-    return response.content
+    try:
+        with open("db.json", "r") as db_file:
+            chats = json.load(db_file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        chats = []
+
+    chats.append({"code": code, "language": language, "response": response.text})
+
+    with open("db.json", "w") as db_file:
+        json.dump(chats, db_file, indent=4)
+
+    return response.text
