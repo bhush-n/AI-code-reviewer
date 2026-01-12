@@ -35,7 +35,7 @@ st.sidebar.header("🧠 AI Code Reviewer")
 
 language = st.sidebar.selectbox("Select Language", ("Python", "Django", "JavaScript"))
 
-st.sidebar.header("💬 New Chat")
+st.sidebar.header("💬 Start a fresh code review.")
 if st.sidebar.button("➕ New Chat"):
     st.rerun()
 
@@ -46,7 +46,7 @@ try:
         if past_chats:
             # This will now appear in the center because of the CSS above
             st.toast(
-                "💡 You can also select a past review from the sidebar to view its details."
+                "💡💡 You can also select a past review from the sidebar to view its details."
             )
         for i, chat in enumerate(past_chats):
             if st.sidebar.button(f"{chat['title']}", key=f"chat_button_{i}"):
