@@ -2,7 +2,6 @@
 import json
 import shutil
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 from backend import db
@@ -23,7 +22,6 @@ def main() -> int:
         return 1
 
     inserted = 0
-    fallback_ts = datetime.now(timezone.utc).isoformat()
     for row in rows:
         db.insert_review(
             title=row.get("title", "Untitled"),
