@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f9;
+  --surface-2: #eeeef2;
+  --border: #e4e4ea;
+  --text: #0b0b0f;
+  --text-muted: #6b6b7b;
+  --accent: #6342ff;
+  --accent-glow: rgba(124, 92, 255, 0.35);
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+
+.dark {
+  --bg: #0b0b0f;
+  --surface: #13131a;
+  --surface-2: #1b1b24;
+  --border: #26262f;
+  --text: #ececf1;
+  --text-muted: #8a8a99;
+  --accent: #7c5cff;
+  --accent-glow: rgba(124, 92, 255, 0.35);
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: theme("fontFamily.sans");
+}
+
+.review-glow {
+  box-shadow: 0 0 0 0 var(--accent-glow);
+  transition: box-shadow 200ms ease-out;
+}
+.review-glow:hover {
+  box-shadow: 0 0 24px 4px var(--accent-glow);
+}
+
+.bg-radial-accent {
+  background-image: radial-gradient(
+    600px circle at 0% 0%,
+    rgba(124, 92, 255, 0.06),
+    transparent 60%
+  );
+}
