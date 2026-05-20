@@ -26,7 +26,12 @@ export function TopBar() {
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm" className="gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-2"
+              data-shortcut="language"
+            >
               <span className={cn("w-2 h-2 rounded-full", current.dotColor)} />
               {current.label}
             </Button>
