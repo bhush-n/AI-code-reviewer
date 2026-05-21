@@ -8,23 +8,8 @@ interface Props {
 
 export function ReviewMarkdown({ text }: Props) {
   return (
-    <div className="prose prose-invert max-w-none text-sm leading-relaxed">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
-        components={{
-          code({ className, children, ...props }) {
-            return (
-              <code
-                className={`${className ?? ""} font-mono text-[12.5px]`}
-                {...props}
-              >
-                {children}
-              </code>
-            );
-          },
-        }}
-      >
+    <div className="review-md">
+      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
         {text}
       </ReactMarkdown>
     </div>

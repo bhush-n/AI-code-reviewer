@@ -8,13 +8,21 @@ export default {
     extend: {
       colors: {
         bg: "var(--bg)",
+        "bg-deep": "var(--bg-deep)",
         surface: "var(--surface)",
         "surface-2": "var(--surface-2)",
+        "surface-3": "var(--surface-3)",
         border: "var(--border)",
+        "border-strong": "var(--border-strong)",
         text: "var(--text)",
         "text-muted": "var(--text-muted)",
-        accent: "var(--accent)",
-        "accent-glow": "var(--accent-glow)",
+        "text-dim": "var(--text-dim)",
+        brand: "var(--brand)",
+        "brand-2": "var(--brand-2)",
+        "brand-glow": "var(--brand-glow)",
+        // keep legacy `accent` aliased to brand so older class names still work
+        accent: "var(--brand)",
+        "accent-glow": "var(--brand-glow)",
         success: "var(--success)",
         warning: "var(--warning)",
         danger: "var(--danger)",
@@ -22,6 +30,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        display: ["Space Grotesk", "Inter", "sans-serif"],
       },
       borderRadius: {
         md: "8px",
