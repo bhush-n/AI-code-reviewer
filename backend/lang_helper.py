@@ -1,11 +1,22 @@
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
-import streamlit as st
-import json
 
+load_dotenv(Path(__file__).parent / ".env")
+
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    raise RuntimeError(
+        "GROQ_API_KEY environment variable is not set. "
+        "Set it in backend/.env or export it before running uvicorn."
+    )
 
 llm = ChatGroq(
-    model="llama-3.1-8b-instant", temperature=0, api_key=st.secrets["GROQ_API_SECRET"]
+    model="llama-3.1-8b-instant",
+    temperature=0,
+    api_key=GROQ_API_KEY,
 )
 
 
@@ -59,24 +70,5 @@ Code:
 
     # Generate a title for the code review
     title = generate_title(code)
-
-    try:
-        with open("db.json", "r") as db_file:
-            chats = json.load(db_file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        chats = []
-
-    if not any(chat["title"] == title and chat["code"] == code for chat in chats):
-        chats.append(
-            {
-                "title": title,
-                "code": code,
-                "language": language,
-                "response": response.text,
-            }
-        )
-
-    with open("db.json", "w") as db_file:
-        json.dump(chats, db_file, indent=4)
 
     return response.text
